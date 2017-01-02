@@ -4,15 +4,18 @@ Polymer({
 
   properties: {
     defaultDay: {
-      type: Number
+      type: Number,
+      value: new Date().getDay()
     },
 
     defaultMonth: {
-      type: String
+      type: String,
+      value: new Date().getMonth()
     },
 
     defaultYear: {
-      type: Number
+      type: Number,
+      value: new Date().getFullYear()
     },
 
     age: {
@@ -52,21 +55,6 @@ Polymer({
 
   listeners: {
     'iron-select': 'calculateAge'
-  },
-
-  getSetDay: function(defaultDay) {
-    if (defaultDay) return defaultDay;
-    return new Date().getDay();
-  },
-
-  getSetMonth: function(defaultMonth) {
-    if (defaultMonth) return defaultMonth;
-    return new Date().getMonth();
-  },
-
-  getSetYear: function(defaultYear) {
-    if (defaultYear) return defaultYear;
-    return new Date().getFullYear();
   },
 
   _getAllDays: function() {
