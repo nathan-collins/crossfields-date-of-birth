@@ -3,15 +3,15 @@ Polymer({
   is: 'crossfields-date-of-birth',
 
   properties: {
-    selectedDay: {
+    defaultDay: {
       type: Number
     },
 
-    selectedMonth: {
+    defaultMonth: {
       type: String
     },
 
-    selectedYear: {
+    defaultYear: {
       type: Number
     },
 
@@ -54,18 +54,18 @@ Polymer({
     'iron-select': 'calculateAge'
   },
 
-  getCurrentDay: function(selectedDay) {
-    if (selectedDay) return selectedDay;
+  getSetDay: function(defaultDay) {
+    if (defaultDay) return defaultDay;
     return new Date().getDay();
   },
 
-  getCurrentMonth: function(selectedMonth) {
-    if (selectedMonth) return selectedMonth;
+  getSetMonth: function(defaultMonth) {
+    if (defaultMonth) return defaultMonth;
     return new Date().getMonth();
   },
 
-  getCurrentYear: function(selectedYear) {
-    if (selectedYear) return selectedYear;
+  getSetYear: function(defaultYear) {
+    if (defaultYear) return defaultYear;
     return new Date().getFullYear();
   },
 
@@ -113,10 +113,6 @@ Polymer({
     if(age < 0) return 0;
 
     return age;
-  },
-
-  getMonthNumber: function(name) {
-    return this.months.indexOf(name.toLowerCase());
   },
 
   dayChanged: function(event) {
