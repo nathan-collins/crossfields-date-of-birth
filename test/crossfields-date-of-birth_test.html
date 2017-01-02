@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>crossfields-date-of-birth test</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../crossfields-date-of-birth.html">
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <crossfields-date-of-birth></crossfields-date-of-birth>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('crossfields-date-of-birth', function() {
+        test('instantiating the element works', function() {
+          var element = fixture('basic');
+          assert.equal(element.is, 'crossfields-date-of-birth');
+        });
+      });
+    </script>
+  </body>
+</html>

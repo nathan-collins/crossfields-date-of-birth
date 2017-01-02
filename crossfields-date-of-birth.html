@@ -1,0 +1,84 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+
+<!--
+`crossfields-date-of-birth`
+Date of birth display selection
+
+@demo demo/index.html
+-->
+
+<dom-module id="crossfields-date-of-birth">
+  <template>
+    <style is="custom-style">
+      paper-dropdown-menu, paper-listbox {
+        width: 80px;
+      }
+      paper-dropdown-menu {
+        margin: auto;
+        display: block;
+        margin-right: 10px;
+      }
+      paper-item {
+        display: flex;
+        flex-direction: column;
+        width: 80px;
+        padding: 10px 0;
+      }
+
+      #monthDropdown {
+        width: 150px;
+      }
+
+      #monthDropdown paper-listbox {
+        width: 150px;
+      }
+
+      #monthDropdown paper-item {
+        width: 150px;
+      }
+
+      .dobList {
+        display: flex;
+        flex-direction: row;
+      }
+
+      #ageDisplay {
+        padding: 10px 5px;
+        align-self: flex-end;
+        font-size: 1.5rem;
+      }
+    </style>
+    <slot>
+      <div class="dobList">
+        <paper-dropdown-menu label="Day" id="dayDropdown">
+          <paper-listbox class="dropdown-content dayList" selected="{{getCurrentDay(selectedDay)}}" attr-for-selected="value" on-iron-select="dayChanged">
+            <template is="dom-repeat" items="{{_getAllDays()}}">
+              <paper-item value="{{item}}">{{item}}</paper-item>
+            </template>
+          </paper-listbox>
+        </paper-dropdown-menu>
+
+        <paper-dropdown-menu label="Month" id="monthDropdown">
+          <paper-listbox class="dropdown-content monthList" selected="{{getCurrentMonth(selectedMonth)}}" attr-for-selected="value" on-iron-select="monthChanged">
+            <template is="dom-repeat" items="{{months}}">
+              <paper-item value="{{item}}">{{item}}</paper-item>
+            </template>
+          </paper-listbox>
+        </paper-dropdown-menu>
+
+        <paper-dropdown-menu label="Year" id="yearDropdown">
+          <paper-listbox class="dropdown-content yearList" selected="{{getCurrentYear(selectedYear)}}" attr-for-selected="value" on-iron-select="yearChanged">
+            <template is="dom-repeat" items="{{_getAllYears(maximumAge)}}">
+              <paper-item value="{{item}}">{{item}}</paper-item>
+            </template>
+          </paper-listbox>
+        </paper-dropdown-menu>
+      </div>
+      <div id="ageDisplay"><span>[[ageLabel]] {{age}}</span></div>
+    </slot>
+  </template>
+
+  <script src="crossfields-date-of-birth.js"></script>
+</dom-module>
